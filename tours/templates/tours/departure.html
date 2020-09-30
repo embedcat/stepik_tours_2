@@ -1,0 +1,27 @@
+{% extends 'tours/base.html' %}
+{% block container %}
+
+<div class="container mt-3">
+    <h1 class="display-5 mt-4">Летим из <span data-test="from">{{ departure }}</span></h1>
+    <p class="mb-4" >Найдено <span data-test="tourcount">{{ filter_values.tours_num }}</span> туров, от <span data-test="pricemin">{{ filter_values.pricemin }}</span> до <span data-test="pricemax">{{ filter_values.pricemax }}</span> и от <span data-test="nightsmax">{{ filter_values.nightsmin}}</span> ночей до <span data-test="nightsmax">{{ filter_values.nightsmax }}</span> ночей</p>
+    <!-- HERO -->
+
+    <!-- CARDS -->
+
+      <div class="row mt-5" data-test="cards">
+        {% for t in tours %}
+        <div class="col-4" data-test="card">
+            <div class="card mb-3" >
+            <img src={{ t.picture }} class="card-img-top img-fluid" data-test="picture">
+                <div class="card-body">
+                    <h5 class="card-title">{{ t.title }}</h5>
+                    <p class="card-text">{{ t.description }}</p>
+                    <a href="../tour/{{ t.id }}" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

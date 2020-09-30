@@ -1,0 +1,25 @@
+{% extends 'tours/base.html' %}
+{% block container %}
+    <div class="jumbotron text-center mt-4">
+      <h1 class="display-4">Всякие туры</h1>
+      <p class="lead">{{ subtitle }}</p>
+      <p class="mt-5 w-50 mx-auto">{{ description }}</p>
+    </div>
+
+    <!-- CARDS -->
+
+    <div class="row mt-5" data-test="cards">
+        {% for t in tours %}
+        <div class="col-4" data-test="card">
+            <div class="card mb-3" >
+            <img src={{ t.picture }} class="card-img-top img-fluid" data-test="picture">
+                <div class="card-body">
+                    <h5 class="card-title">{{ t.title }}</h5>
+                    <p class="card-text">{{ t.description }}</p>
+                    <a href="./tour/{{ t.id }}" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
