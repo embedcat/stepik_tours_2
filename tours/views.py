@@ -69,3 +69,11 @@ class TourView(View):
                           'departure': data.departures[tour['departure']],
                           'departures': data.departures
                       })
+
+
+def page_not_found_view(request, exception):
+    return render(request=request, template_name='tours/error.html', status=404, context={'code': '404'})
+
+
+def error_view(request):
+    return render(request=request, template_name='tours/error.html', status=500, context={'code': '500'})

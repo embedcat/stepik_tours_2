@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from tours.views import MainView, DepartureView, TourView
 
+handler404 = 'tours.views.page_not_found_view'
+handler500 = 'tours.views.error_view'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', MainView.as_view(), name='Main View'),
